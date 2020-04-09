@@ -13,18 +13,23 @@ public class Main{
 	long skillid = 0;
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
-	System.out.println("Enter skill Id");
-	skillid = Long.parseLong(br.readLine().trim());
-	System.out.println("Enter skill name");
-	skillname = br.readLine().trim();
-	//setting into skill object 
-	Skill skill = new Skill(skillid,skillname);
-	skill.setSkillId(skillid);
-	skill.setSkillName(skillname);
+	System.out.println("Enter number of skills you want to add : ");
+	int number = Integer.parseInt(br.readLine().trim());
 	
-	// callingn skilldao class 
 	SkillDAO skilldao = new SkillDAO();
-	skilldao.insertSkills(skill);
+	
+	for (int i=0;i<number;i++) {
+	    System.out.println("Enter skill Id");
+		skillid = Long.parseLong(br.readLine().trim());
+		System.out.println("Enter skill name");
+		skillname = br.readLine().trim();
+		//setting into skill object 
+		Skill skill = new Skill(skillid,skillname);
+		skill.setSkillId(skillid);
+		skill.setSkillName(skillname);
+		// callingn skilldao class 
+		skilldao.insertSkills(skill);
+	}
 	
 	// declare list
 	List<Skill> skillList = new ArrayList<Skill>();
